@@ -1,0 +1,4 @@
+python中的异常处理：
+try。。。
+except。。。
+如果try后的部分报错则执行except后面的部分，不报错执行try后的语句

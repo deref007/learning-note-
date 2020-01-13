@@ -1,0 +1,15 @@
+PYTHON的datetime模块：
+1.构造一个datetime对象：
+datetime.datetime（year,month,day,hour=0,minute=0,second=0）
+2datetime.today()创建一个datetime对象
+返回的是本地时间的datetime对象
+3、datetime.now（tz=none）
+5、datetime.fromtimestamp（timestamp）
+从timestamp中返回一个datetime对象
+根据给定的timestamp时间戳返回一个date对象
+
+时间戳：时间戳指格林威治时间1970年1月1日零秒起至现在的总秒数。时间戳是一份能够表示一份数据在一个特定时间点已经存在的完整的可验证的数据。为用户提供一份电子证据，以证明用户的某些数据的产生时间。用来支撑公开密钥基础设施的“不可否认”服务。
+
+
+
+

@@ -1,0 +1,4 @@
+如何去分析图像采用目前最先进的字典学习技术去分析图像
+DICTOL：A Discriminative dictitonary Learning Toolbox for Classification
+
+该文件夹提供了如下的方法去：SRC、ODL、DLSL、FDDL、COPAR、LRSDL
