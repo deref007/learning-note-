@@ -1,0 +1,99 @@
+导入：检索log的函数
+         获取文件更改的函数
+         检索log的字典函数
+         祖先函数
+         解析文件的函数
+定义一个类：
+__init__函数
+ 类的方法：
+ 两个属性：log_index,check_ancestor_time_out
+def __init__(self,log_index,check_ancestor_time_out=36000):
+       #断言
+        assert Detector.git_logs is not none
+        assert Detector.git_numstats is not none
+        assert Detector.git_log_dict is not none
+        #自身属性
+        self.log_index = log_index
+        self.commit_id=Dector.git[log_index].commit_id
+        self.check_ancestor_time_out = check_ancestor_time_out
+        self.time_stamp = Detector.git_log_dict[self.commit_id].time_stamp
+        self.ancestors = get_ancestors(Detector.git_log_dict,self.commit_id,
+                                       self.time_stamp, check_ancestor_time_out)
+ 定义类的函数 寻找重复change
+def retrieve_duplicate_comits(self):
+      #先找时间相似的
+      duplicate_commits=list()
+      if self.num_stat is None:
+          return
+      modified_files,rename_dict = self.num_stat.modified_files
+      if len(modified_files)=0:
+          reeturn duplicate_commits
+      #与之相比较剩余的commit
+      candidate_commit = list()
+      index = self.log_index
+      while index>=0:
+          index -=1
+          commit_id2=Detector.git_logs[index].commit_id
+          if not self.check_is_recent_commits(commit_id2):#判断是否满足check_is_recent_commits时间判断函数
+              break
+          candidate_commits.append(commit_id2)
+          #匹配条件
+        for commit_id2 in candidate_commits:
+             if self.check_duplicate_commit(commit_id2):#匹配check_duplicate_commit()函数(条件的核心函数）
+                 duplicate_commit.append(commit_id2)
+        return duplicate_commits
+#判断分支
+def check_different_branches(self,commit_id2):
+      #判断id1是不是id2的祖先
+      if commit_id2 in self.ancestors:
+          return False
+      commit2_time_stamp = Detector.git_log_dict[commit_id2].time_stamp
+      ancestors2 = get_ancestors(Detector.git_log_dict,commit_id2,commit2_time_stamp,self.check_ancestor_time_out)
+      if self.commit_id in ancestors2:
+          return False
+      return True
+#判断文件
+def check_same_files(self,commit_id2):
+    if self.num_stat is None:
+        return False
+    assert isinstance(self.num_stat,GitNumStat)
+    modified_files1,rename_dict1= self.num_stat.modified_files
+    assert isinstance(commit_numstat,GitNumStat)
+    modified_files2,renme_dict2 = commit2_numstat.modified_files
+    if modified_files1 == modified_files2 and rename_dict1== rename_dict2:
+             return True
+    return False
+#对应时间的判读
+def check_is_recent_commits(self,commit_id2,time_length=600):
+      commit2_time_stamp = Detector.git_log_dict[commit_id2].time_stamp
+      return self.time_stamp - commit2_time_stamp <= time_length
+
+def check_duplicate_commit(self,commit_id2):
+      if self.check_same_files(commit_id2):
+          if self.check_differebt_branches(commit_id2):
+              reeturn True
+      return False
+
+def input_duplicate_commits(project):
+      Detector.git_logs = retrieve_git_logs(project)
+      Detector.git_logs.sort(key=lambda x:x.time_stamp,reverse=True)
+      Detector.git_log_dict=retrieve_git_logs_dicts(project)
+      Detector.git_numstats = get_numstats(project)
+      index = 0
+      while index <len(Dectector.git_logs):
+            print(index)
+            detector = Detector(index)
+            dup_commits=detector.retrieve_duplicate_commit()
+            if len(dup_commits) > 0:
+                  print('find duolicate')
+                  print(detector.commit_id)
+                  print(dup_commitss)
+            index +=1
+
+
+if __name__=='main__:
+     input_duplicate_commits('activemq')
+
+
+
+

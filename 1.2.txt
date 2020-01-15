@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 字典学习（Dictionary Learning,KSVD)详解
 字典学习也是一种数据降维的方法
 字典学习思想：
@@ -48,6 +49,37 @@ U和V均为单位正交阵，U称为左奇异矩阵，V称为右奇异矩阵，l
 
 
 
+=======
+Google Colab的使用教程
+
+Google是一个免费的云服务，能支持免费的GPU
+
+一、在Google Drive上创建文件夹
+把文件连接到colab上，就可以进行编程序了
+
+测试在前三个条件满足下的dup数量：
+activemq：总:
+derby：总：11036 dup：1618-3=1615
+camel:  总：52713 duP:8306-2=8304
+mahout:总：4629 dup：56
+
+
+仔细分析detector这个类
+
+监测函数为retrieve_duolicate_commits(),这个函数调用detector类的retrieve（）函数：
+这个函数定义了两个列表：分别是duplicate_commit()和candidate_commits()
+匹配的函数就是输入commit_id2,是否满足check_duplicate_commit()函数
+
+也就是说明commit_id2是变量
+因此函数check_diff()的变量就是必须commit_id2
+
+def check_same_diff(self,commit_id2):
+diff1=diff_git（log_index,gitlogs）#与类相连接
+判断diff1是否等于diff2
+diff2=diff_git(log_index,gitlogs)
+
+还有一个方向就是把diff_git（）函数的变量变成commit_id2:
+>>>>>>> learning_note
 
 
 
