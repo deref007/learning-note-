@@ -1,0 +1,21 @@
+核心：
+
+从commit message中找去信息
+
+
+#特征提取代码流程
+
+生成git log
+
+通过分析log
+
+得到全部commit的commit message
+
+通过正则表达式把ISSUE ID都提取出来
+
+其中csv result 的得到必须要借助于RASZZ
+
+#接下来的工作
+
+1、根据提取feature的python代码，在里面添加代码，找出duplicate change
+

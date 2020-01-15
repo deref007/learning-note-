@@ -1,0 +1,33 @@
+python中的函数getattr()的用法详解：
+
+getattr的语法：getattr(object,name[,default])
+参数：object --对象
+          name --字符串，对象属性
+          default --默认返回值，若不提供返回值，在没有对应属性，将触发attributerror
+Python字典（Dictionary）的get()方法：
+语法：dict.get(key,dafault=None)
+参数：key--字典中要查找的键
+          default--如果指定的键的值不存在，返回该默认值
+
+Python多进程讲解：
+1、subprocess.Popen类
+subprocess.Popen(args,参数。。。。) 创建并返回一个子进程，并在这个进程中执行指定的程序
+参数：
+args：位置参数args是必须的，表示要执行的命令或可执行文件的路径。一个由字符串组成的序列（通常是列表），也可以仅仅是一个字符串
+stdin：指定子进程的标准输入
+stdout：指定子进程的标准输出
+stdeer：指定子进程的标准错误输出
+executable：如果这个参数不是none 将替代参数args作为可执行的程序
+shell：布尔型变量。明确要求使用shell运行程序，与参数executable一同指定子进程在运行什么。如果executable=none而shell=true，则使用
+/bin/sh来执行args指定的程序；也就是说python首先起一个shell，再用这个shell来解释指定运行的命令。
+cwd：代表路径的字符串，指定子进程运行的工作目录，这个目录必须存在
+
+python中的with语句作用简述：
+在python中常用的是with as 语句来操作一个文件，其作用是打开一个文件，如果一切正常则将文件赋值给as后面的名称
+
+python中的正则表达式：re.compile()函数的使用
+函数理解：在python中，通过re模块来提供对正则表达式的支持。使用此函数re.compile()，将正则表达式的字符串形式编译为pattern实例
+，然后使用pattern实例处理文本并获得匹配结果。
+
+python中split()函数理解;
+split()通过指定分隔符对字符串进行切片，并返回分割后的字符串列表

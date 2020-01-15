@@ -1,0 +1,71 @@
+sqlalchemy的框架学习：
+from sqlalchemy import create_engine
+#创建引擎create_engine,用于连接数据库
+engine=create_engine('mysql+mysqlconnector://%s:%s@localhost:3306/%s?charset=utf-8'%(username,password,db_name))
+
+#声明映射（建立数据库表的模型)
+#声明基类
+from sqlalchemy.ext.declarative import declarative_base
+Base=declarative_base()
+#构建数据库表
+class User(Base):
+    __tablename__=' '
+   定义表的列，及数据类型
+#创建表的实例
+#创建会话
+需要引擎创建一个session，因为只有通过session才能与数据库进行交互
+Session = sessionmaker(engine)
+db_session = Session()
+
+Base.metadata.create_all(engine)
+
+增删改查的常用函数：
+1、增加数据的函数：add（类名（增加的数据））
+2、查询函数：query（类名）  
+     匹配过滤查询函数 filter()函数。格式：  query（类名）.filter(条件)
+3、更改数据函数：update（{k:v}）
+4、delete（）删除函数
+
+知识点：
+一、关于Session
+Session其实就是一个会话，可以和数据库打交道的一个会话
+会话建立与数据库的所有对话，提供了一个入口点获得查询对象，向数据库发送查询，使用会话对象的当前数据库连接，
+将结果行填充在对象中，然后存储在会话中。这种结构称之为身份映射。保证了一个对象只能有一个主键。
+
+1、Session实现了身份映射模式，存储了键入其主键的对象，但是，它不执行任何类型的查询缓存。
+2、Session创建和管理数据库连接的会话；model object通过session对象访问数据库，并把访问到的数据Identity Map的方式，映射到model，object中
+3、Session在刚被创建的时候，还没有和任何model object绑定，此时是无状态的。
+当接收到query查询语句的时候，执行的结果或保持或关联到session中。
+4、session在需要访问数据库的时候创建，确切的是在add/update/dalete的时候
+
+获取一个session，Session是一个直接实例化的常规的python类。为了标准会话的配置和获取方式
+sessionmaker 类通常用于创建顶级会话配置，然后在整个应用程序中使用。
+
+python中的isinstance（）函数：判断一个对象是否是一个已知的类型
+语法：isinstance（object，classinfo）
+object --实例对象
+classinfo --可以是直接或间接类名、基本类型或者由它们组成的元组。
+若相同则返回True，否则返回false
+
+super()函数的方法：是用于调用父类（超类）的一个方法
+
+super（type[,object-or-type])
+type--类
+object-or-type --类，一般是self
+
+从db到object到query
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

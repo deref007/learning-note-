@@ -1,0 +1,74 @@
+如何快速写出函数：
+写函数的时候，首先要写出变量，确认出变量。然后再写函数
+
+在python中打开和关闭文件
+
+当打开文件的时候：通过调用open()内置函数完成的。
+open()的参数有一个必须的参数，它是文件的路径。open的返回是这个文件的文件对象
+
+当关闭文件的时候，有两种方法，一种是try，finally块
+还有一种是使用with语句：
+with open('txt')as reader:
+使用with语句，一旦离开了with块或甚至在错误的情况下，系统也会自动关闭文件
+
+open(）的第二个位置参数，此参数是一个字符串，默认值是'r'表示只读模式
+'w'是写入模式，会覆盖文件。
+‘rb’是二进制模式打开读的模式
+‘wb’是以二进制模式写入
+
+文本文件:语法格式同上，open()将返回一个TextIOWrapper文件对象
+缓冲二进制文件类型：用于读取和写入二进制文件，语法格式同上，将返回一个BufferedReader对象
+
+读写已打开的文件
+打开文件后，你将需要读取或写入文件。
+首先，阅读一个文件，可以在文件对象上调用多种方法
+方法：描述
+.read(size=-1):这将根据size的字节数从文件中读取，如果没有传递参数或None或-1，那么整个文件被读取。
+.readlines(size=-1):这将从该行读取最多size数量的字符。直到行结尾，然后到下一行。如果没有参数被传递或None或-1，则整行（或行剩余的部分）被读出
+使用.readlines()将整个文件作为列表读取
+f=open('txt')
+f.readlines()
+也可以通过使用list()从文件对象创建列表来完成：
+f=open('txt')
+list(f)
+
+迭代文件中的每一行
+读取文件时常见的事情是迭代每一行。
+with open（'txt','r')  as reader：
+         for line in reader：
+	print(line,end=' ')
+
+注意：上面的示例中，end=" "是为了防止python为正在打印的文本添加额外的换行符
+
+写入文件：
+方法：描述
+.write(string):将字符串写入文件
+.writelines(seq):将序列写入文件
+
+with open('txt','r') as reader:
+      d=reader.readlines()
+with open('txt','w') as writer:
+      for ~ in reversed():
+           writer.writer()
+
+
+使用字节
+
+当使用字节字符串处理文件，可以通过在'b'字符来完成。
+with open ('txt','rb') as reader:
+print(reader.readline())
+
+追加文件内容
+
+需要在参数中追加'a'字符来完成
+with open （‘txt’,'a'）as a_writer:
+      a_writer.write('')
+
+
+
+
+
+
+
+
+
